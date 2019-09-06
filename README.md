@@ -1,5 +1,7 @@
 # vue-myline-master
 
+## brew install
+
 ## Project setup
 ```
 yarn install

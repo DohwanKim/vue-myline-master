@@ -1,18 +1,22 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <LoginView :selectTab="selectTab" v-if="visibleList.TabView" @change="changeTab"></LoginView>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import LoginView from '@/components/LoginView.vue';
 
 export default {
   name: 'home',
+  data(){
+    return {
+      selectTab: 0,
+    }
+  },
   components: {
-    HelloWorld,
+    LoginView,
   },
 };
 </script>
