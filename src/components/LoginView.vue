@@ -23,7 +23,7 @@
                 <input class="inputsize" v-model="auth.id">
               </div>
               <div class="row input-height">
-                <input class="inputsize" v-model="auth.pw">
+                <input class="inputsize" v-model="auth.pw" type="password">
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
         <div class="col-10">
           <div class="row">
             <div class="col accout border">
-              신규 가입
+               <router-link to="/login/register" exact>신규 가입</router-link>
             </div>
           </div>
         </div>

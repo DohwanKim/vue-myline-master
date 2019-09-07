@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 import Login from './components/LoginView.vue';
-import Signup from './views/Signup.vue';
-import Main from './views/Main.vue';
+import Register from './components/RegisterView.vue';
+import Main from './components/MainView.vue';
 import FirebaseService from './api/firebaseService'
 
 Vue.use(Router);
@@ -29,9 +29,9 @@ const router = new Router({
       },
     },
     {
-      path: '/signup',
-      name: 'signup',
-      component: Signup,
+      path: '/login/register',
+      name: 'register',
+      component: Register,
       meta: {
         auth: false,
       },
