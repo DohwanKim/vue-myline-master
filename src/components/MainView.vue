@@ -30,10 +30,13 @@
           <!-- 사이즈 고정 목록 끝 -->
           <div class="row friendList">
             <div class="col">
-              <div class="friendHeight row border"></div>
-              <div class="friendHeight row border"></div>
-              <div class="friendHeight row border"></div>
-              <div class="friendHeight row border"></div>
+              <!-- 각 프로필 리스트 출력 -->
+              <div class="friendHeight row border">
+                <b-img v-bind="mainProps" rounded="circle" alt="User image" src="../assets/user01.jpeg"></b-img>
+              </div>
+              <div class="friendHeight row border">2</div>
+              <div class="friendHeight row border">3</div>
+              <div class="friendHeight row border">4</div>
             </div>
           </div>
         </div>
@@ -47,6 +50,11 @@
   import FirebaseService from '../api/firebaseService';
 
   export default {
+    data() {
+      return {
+        mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' }
+      }
+    },
     methods: {
       async logout() {
         await FirebaseService.logout();
