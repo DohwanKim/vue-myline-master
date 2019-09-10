@@ -19,7 +19,7 @@
               </div>
               <div class="col align-self-center profileGrid">
                 <div class="container">
-                  <b-img v-bind="mainProps" rounded="circle" alt="User image" src="../assets/user01.jpeg"></b-img>
+                  <img v-bind:src="user.userImage" class="profileImage rounded-circle"></img>
                 </div>
               </div>
               <div class="col align-self-end">
@@ -45,9 +45,12 @@
   export default {
     data() {
       return {
-        mainProps: { blank: true, blankColor: '#777', width: 75, height: 75, class: 'm1' }
+        user: {
+            userName: '김동륜',
+            userImage: 'https://yt3.ggpht.com/a-/AN66SAxYHLLDKseP_C5JO3EEACtMBANis6rqfSauzw=s900-mo-c-c0xffffffff-rj-k-no',
+        },
       }
-    },
+    }
   }
 </script>
 
@@ -67,8 +70,13 @@
 }
 .profileGrid{
   position: absolute;
+  width: 50px;
   left: 140px;
-  top: -40px;
+  top: -41px;
 }
-
+.profileImage {
+  background-size: 150px;
+  width: 80px;
+  height: 80px;
+}
 </style>

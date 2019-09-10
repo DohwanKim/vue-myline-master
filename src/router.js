@@ -4,7 +4,7 @@ import Home from './views/Home.vue';
 import Login from './components/LoginView.vue';
 import Register from './components/RegisterView.vue';
 import Main from './components/MainView.vue';
-import Profile from './components/Profile.vue'
+import Profile from './components/ProfileView.vue'
 
 import FirebaseService from './api/firebaseService'
 
