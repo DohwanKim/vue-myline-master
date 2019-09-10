@@ -20,10 +20,10 @@
                 </div>
               </div>
               <div class="row border-bottom input-height">
-                <input class="inputsize" v-model="auth.id">
+                <input class="inputsize" v-model="auth.idText">
               </div>
               <div class="row input-height">
-                <input class="inputsize" v-model="auth.pw" type="password">
+                <input class="inputsize" v-model="auth.pwText" type="password">
               </div>
             </div>
           </div>
@@ -80,8 +80,8 @@
       return {
         firebaseService: FirebaseService,
         auth: {
-          id : '',
-          pw : '',
+          idText : '',
+          pwText : '',
         },
       }
     },

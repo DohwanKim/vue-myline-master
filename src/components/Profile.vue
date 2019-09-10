@@ -52,6 +52,10 @@
 </script>
 
 <style scoped>
+#profile{
+  min-width: 430px;
+
+}
 .top{
   height: 200px;
 }
