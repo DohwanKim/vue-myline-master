@@ -18,7 +18,7 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-10 input-height">
-          <router-link to="/login" exact>회원가입</router-link>
+          <div v-on:click="move">회원가입</div>
         </div>
       </div>
     </div>
@@ -27,7 +27,11 @@
 
 <script>
   export default {
-    
+    methods: {
+      move() {
+        this.$router.push('/login');
+      }
+    },
   }
 </script>
 
