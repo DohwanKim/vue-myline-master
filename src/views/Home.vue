@@ -1,8 +1,6 @@
 <template>
   <div class="home">
     <LoginView v-bind="selectTab" v-if="visibleList.TabView" @change="changeTab"></LoginView>
-    <button @click="test1">+</button>
-    <button @click="test2">-</button>
   </div>
 </template>
 
@@ -21,12 +19,6 @@ export default {
     LoginView,
   },
   methods: {
-    test1() {
-      this.$store.state.selectTab++;
-    },
-    test2(){
-      this.$store.state.selectTab--;
-    },
   },
 };
 </script>

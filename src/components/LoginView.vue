@@ -12,14 +12,14 @@
           <div class="row-md">
             <div class="col">
               <div class="row noPadding">
-                <div class="col border input-height tab-text noPadding" @click="loginTab(0)">
-                  <div class="inputsize" v-bind:class="{ active: this.$store.state.selectTab === 0}">
+                <div class="col border input-height tab-text noPadding" v-on:click="changeTab(0)">
+                  <div class="inputsize" v-bind:class="{active: selectTab===0}">
                     <span class="helper"></span>
                     이메일 로그인
                   </div>
                 </div>
-                <div class="col border-right border-bottom border-top input-height tab-text noPadding" @click="loginTab(1)">
-                  <div class="inputsize" v-bind:class="{ active: this.$store.state.selectTab === 1 }">
+                <div class="col border-right border-bottom border-top input-height tab-text noPadding"  v-on:click="changeTab(1)">
+                  <div class="inputsize" v-bind:class="{active: selectTab===1}">
                     <span class="helper"></span>
                     QR코드 로그인
                   </div>
@@ -67,13 +67,9 @@
       </div>
 
       <div class="row justify-content-center">
-        <div class="col-10">
-          <div class="row">
-            <div class="col accout border">
-              <span class="helper"></span>
-              <router-link to="/login/register" exact class="blackfont">신규 가입</router-link>
-            </div>
-          </div>
+        <div class="col-10 border accout" v-on:click="move">
+          <span class="helper"></span>
+          신규가입
         </div>
       </div>
 
@@ -89,6 +85,7 @@
 
 <script>
   import FirebaseService from '../api/firebaseService';
+  import { mapState, mapActions } from 'vuex';
 
   export default {
     data() {
@@ -104,17 +101,21 @@
     created () {
       
     },
+    computed: {
+      ...mapState([
+        'selectTab',
+      ])
+    },
     methods: {
+      ...mapActions([
+        'changeTab'
+      ]),
       firebaseLogin() {
-        FirebaseService.login(this.auth.id, this.auth.pw);
+        FirebaseService.login(this.auth.idText, this.auth.pwText);
       },
-      loginTab(tabNum){
-        this.$store.state.selectTab = tabNum;
-        console.log(this.$store.state.selectTab);
+      move() {
+        this.$router.push('/login/register');
       },
-      selectTabClass(){
-        
-      }
     },
   }
 </script>
@@ -192,14 +193,13 @@
   height: 10vh;
 }
 .accout{
+  position: relative;
   background-color: white;
   height: 6vh;
-  margin-top: 1vh;
   text-align: center;
   font-size: 13pt;
   font-weight: 800;
   color: rgb(89, 92, 99);
-  vertical-align: middle;
 }
 .fpassword {
   background-color: rgb(244, 245, 246);
@@ -232,7 +232,7 @@
   height: 100%;
   vertical-align: middle;
 }
-.blackfont{
-  color: rgb(89, 92, 99);
+.viewHeight{
+  height: 100%;
 }
 </style>

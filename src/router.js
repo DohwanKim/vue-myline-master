@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
+import Main from './views/Main.vue';
+
 import Login from './components/LoginView.vue';
 import Register from './components/RegisterView.vue';
-import Main from './components/MainView.vue';
 import Profile from './components/ProfileView.vue'
 
 import FirebaseService from './api/firebaseService'
@@ -43,7 +44,7 @@ const router = new Router({
       name: 'main',
       component: Main,
       meta: {
-        auth: false,
+        auth: true,
       },
     },
     {
@@ -51,7 +52,7 @@ const router = new Router({
       name: 'profile',
       component: Profile,
       meta: {
-        auth: false,
+        auth: true,
       },
     },
   ],
