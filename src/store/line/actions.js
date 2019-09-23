@@ -5,4 +5,7 @@ export default {
   changeSideTab({commit}, data){
     commit('updateSideTab', data);
   },
+  changeDropDown({commit}, data){
+    commit('updateDropDown', data)
+  }
 }

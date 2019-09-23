@@ -2,15 +2,10 @@
   <div id="profile">
     <div class="container border">
       <div class="row border top">
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-3" v-on:click="move">
-              나가기
-            </div>
-            <div class="col-4 border">
-              공유 내역 공간
-            </div>
-          </div>
+        <div class="col topSpace">
+          <img :src="user.userBI" class="backgroundImage">
+          <div class="text-left" v-on:click="move">나가기</div>
+          <div class="text-right">공유 내역 공간</div>
         </div>
       </div>
       <div class="row middle">
@@ -18,7 +13,7 @@
           <div class="container">
             <div class="row justify-content-end">
               <div class="col-2 picture-con">
-                <img v-bind:src="user.userImage" class="profileImage rounded-circle border"></img>
+                <img :src="user.userImage" class="profileImage rounded-circle border">
               </div>
               <div class="col-5 align-self-end star">
                 즐겨찾기
@@ -27,7 +22,7 @@
           </div>
           <div class="row bottom align-items-end">
             <div class="col nickname">
-              {{ user.userName }} +수정아이콘
+              {{userName}}
             </div>
           </div>
           <div class="row justify-content-center">
@@ -59,11 +54,14 @@
 
 <script>
   export default {
+    components: {
+    },
     data() {
       return {
         user: {
             userName: '김동륜',
-            userImage: 'https://yt3.ggpht.com/a-/AN66SAxYHLLDKseP_C5JO3EEACtMBANis6rqfSauzw=s900-mo-c-c0xffffffff-rj-k-no',
+            userImage: require('@/assets/user02.jpg'),
+            userBI: require('@/assets/profile_background.png')
         },
       }
     },
@@ -75,13 +73,20 @@
         this.$router.push('/main');
       }
     },
+    computed: {
+      userName() {
+        var res = this.user.userName + " +수정아이콘";
+        return res;
+      }
+    },
   }
 </script>
 
 <style scoped>
 #profile{
   min-width: 230px;
-
+  min-height: 100vh;
+  background-color: rgb(244, 245, 246);
 }
 .top{
   height: 200px;
@@ -110,6 +115,7 @@
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
 }
 .helper {
   display: inline-block;
@@ -131,5 +137,27 @@
 }
 .homeBtn {
   margin-top: 3%;
+}
+.topSpace {
+  position: relative;
+  text-align: center;
+  padding: 0 0 0 0;
+  height: 200px;
+}
+.backgroundImage {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.text-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.text-right {
+  position: absolute;
+  top: 8px;
+  right: 16px;
 }
 </style>

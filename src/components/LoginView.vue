@@ -13,13 +13,13 @@
             <div class="col">
               <div class="row noPadding">
                 <div class="col border input-height tab-text noPadding" v-on:click="changeTab(0)">
-                  <div class="inputsize" v-bind:class="{active: selectTab===0}">
+                  <div class="inputsize" v-bind:class="{active: isActive(0)}">
                     <span class="helper"></span>
                     이메일 로그인
                   </div>
                 </div>
-                <div class="col border-right border-bottom border-top input-height tab-text noPadding"  v-on:click="changeTab(1)">
-                  <div class="inputsize" v-bind:class="{active: selectTab===1}">
+                <div class="col border-right border-bottom border-top input-height tab-text noPadding" v-on:click="changeTab(1)">
+                  <div class="inputsize" v-bind:class="{active: isActive(1)}">
                     <span class="helper"></span>
                     QR코드 로그인
                   </div>
@@ -32,7 +32,7 @@
                     <input class="inputsize" v-model="auth.idText" placeholder="이메일">
                   </div>
                   <div class="row border-bottom border-left border-right input-height">
-                    <input class="inputsize" v-model="auth.pwText" type="password" placeholder="비밀번호">
+                    <input class="inputsize" v-model="auth.pwText" type="password" placeholder="비밀번호" @keyup.enter="firebaseLogin">
                   </div>
                   <div class="row">
                     <div class="col loginBtn border" @click="firebaseLogin">
@@ -104,7 +104,7 @@
     computed: {
       ...mapState([
         'selectTab',
-      ])
+      ]),
     },
     methods: {
       ...mapActions([
@@ -116,6 +116,9 @@
       move() {
         this.$router.push('/login/register');
       },
+      isActive(num){
+        return num===this.selectTab;
+      }
     },
   }
 </script>
@@ -123,6 +126,7 @@
 <style scoped>
 #login{
   position: relative;
+  min-height: 100vh;
   background-color: rgb(244, 245, 246);
 }
 .testbc1{

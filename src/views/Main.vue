@@ -1,8 +1,8 @@
 <template>
   <div id="mainView">
-    <div class="container-fluid">
+    <div class="container-fluid topNoRP">
       <div class="row">
-        <div class="col border sidebar">
+        <div class="col-2 border sidebar">
           <div class="row noMargin">
             <div class="col">
               <div class="row">
@@ -20,42 +20,32 @@
                   <div class="sideFont" v-for="(item, index) in sideItems_bottom" v-bind:key="item.key">
                     {{ item.sideItem }}
                   </div>
-                  <!-- Split dropup button -->
-                  <div class="btn-group dropup">
-                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                      <!-- Dropdown menu links -->
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
+                  <div class="sideFont" v-on:click="dropdown_toggle()">메뉴</div>
+                  <DropdownView v-show="dropDown === 1"/>
                 </div>
-                <!-- <div class="" @click="logout">logout</div> -->
               </div>
             </div>
           </div>
         </div>
-        <!--compenents(width: 325px)-->
-        <FriendListView v-show="sideTab === 0"/>
-        <ChatHistoryView v-show="sideTab === 1"/>
-        <TimeLineView v-show="sideTab === 2"/>
-        <NewFriendView v-show="sideTab === 3"/>
+        <div class="col-10 border component">
+          <FriendListView v-show="sideTab === 0"/>
+          <ChatHistoryView v-show="sideTab === 1"/>
+          <TimeLineView v-show="sideTab === 2"/>
+          <NewFriendView v-show="sideTab === 3"/>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import FirebaseService from '../api/firebaseService';
   import { mapState, mapActions } from 'vuex'
 
   import FriendListView from '@/components/FriendListView.vue';
   import ChatHistoryView from '@/components/ChatHistoryView.vue';
   import TimeLineView from '@/components/TimeLineView.vue';
   import NewFriendView from '@/components/NewFriendView.vue';
+  import DropdownView from '@/components/DropdownView.vue'
 
   export default {
     data() {
@@ -78,28 +68,35 @@
     },
     methods: {
       ...mapActions([
-        'changeSideTab'
+        'changeSideTab',
+        'changeDropDown'
       ]),
-      async logout() {
-        await FirebaseService.logout();
-      }
+      dropdown_toggle(){
+        if(this.dropDown === 0){ this.changeDropDown(1) }
+        else { this.changeDropDown(0) }
+      },
     },
     components: {
       FriendListView,
       ChatHistoryView,
       TimeLineView,
       NewFriendView,
+      DropdownView
     },
     computed: {
       ...mapState([
         'sideTab',
+        'dropDown',
       ])
     },
-    watch: {
-      sideTab(nVal) {
-        console.log(nVal)
-      }
-    },
+    // watch: {
+    //   sideTab(nVal) {
+    //     console.log(nVal);
+    //   },
+    //   dropDown(nVal) {
+    //     console.log(nVal);
+    //   }
+    // },
   }
 </script>
 
@@ -171,5 +168,11 @@
 }
 .active{
   color: rgb(255, 255, 255)
+}
+.component {
+  padding: 0 0 0 0;
+}
+.topNoRP {
+  padding-right: 0;
 }
 </style>

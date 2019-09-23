@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="col border widthSet">
+    <div class="col border friendListTop">
       <div class="row height1 border-bottom topTabColor">잉여공간</div>
       <div class="row height2 border-bottom">이름으로 검색 및 펼치기 기능</div>
       <div class="row height1 border-bottom middleTabColor">텍스트: 프로필, 열고 닫기 기능^</div>
@@ -8,7 +8,7 @@
       <div class="row height1 border-bottom middleTabColor">텍스트: 친구(??), 열고 닫기 기능 ^</div>
       <div class="row friendList">
         <div class="col">
-          <div class="friendHeight row border" v-for="(item, index) in user" v-bind:key="item.key">
+          <div class="friendHeight row border" v-for="(item, index) in user" v-bind:key="item.key" v-on:click="move">
             <img v-bind:src="item.userImage" class="profileImage rounded-circle"></img>
             {{ item.userName }}
           </div>
@@ -42,6 +42,11 @@
         ],
       }
     },
+    methods: {
+      move() {
+        this.$router.push('/main/profile');
+      }
+    },
   }
 </script>
 
@@ -51,9 +56,6 @@
 }
 .noMargin{
   margin: 0 0 0 0;
-}
-.widthSet{
-  width: 325px;
 }
 .height1{
   height: 28px;
@@ -70,9 +72,12 @@
 .middleTabColor{
   background-color: rgb(252, 251, 253)
 }
+.friendListTop{
+  height: 100vh;
+  overflow: hidden;
+}
 .friendList{
-  height: 467px;
-  overflow-y: scroll;
+  overflow: scroll;
 }
 .friendHeight{
   height: 200px;

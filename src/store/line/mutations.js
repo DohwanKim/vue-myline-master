@@ -4,5 +4,8 @@ export default {
   },
   updateSideTab(state, data){
     state.sideTab = data;
+  },
+  updateDropDown(state, data){
+    state.dropDown = data;
   }
 }
