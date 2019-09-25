@@ -1,16 +1,28 @@
 <template>
   <div>
     <div class="col border friendListTop">
-      <div class="row height1 border-bottom topTabColor">잉여공간</div>
-      <div class="row height2 border-bottom">이름으로 검색 및 펼치기 기능</div>
-      <div class="row height1 border-bottom middleTabColor">텍스트: 프로필, 열고 닫기 기능^</div>
-      <div class="row height3 border-bottom">자신 프로필</div>
-      <div class="row height1 border-bottom middleTabColor">텍스트: 친구(??), 열고 닫기 기능 ^</div>
-      <div class="row friendList">
+      <div class="row height1 border-bottom topTabColor">
+        <div class="col">잉여공간</div>
+      </div>
+      <div class="row height2 border-bottom">
+        <div class="col">이름으로 검색 및 펼치기 기능</div>
+      </div>
+      <div class="row height1 border-bottom middleTabColor">
+        <div class="col">텍스트: 프로필, 열고 닫기 기능^</div>
+      </div>
+      <div class="row height3 border-bottom">
+        <div class="col">자신 프로필</div>
+      </div>
+      <div class="row height1 border-bottom middleTabColor">
+        <div class="col">텍스트: 친구(??), 열고 닫기 기능 ^</div>
+      </div>
+      <div class="row friendHeight">
         <div class="col">
-          <div class="friendHeight row border" v-for="(item, index) in user" v-bind:key="item.key" v-on:click="move">
-            <img v-bind:src="item.userImage" class="profileImage rounded-circle"></img>
-            {{ item.userName }}
+          <div class="row border friendList" v-for="(item, index) in user" v-bind:key="item.key" v-on:click="moveProfile">
+            <div class="col friend">
+              <img v-bind:src="item.userImage" class="profileImage rounded-circle"></img>
+              {{ item.userName }}
+            </div>
           </div>
         </div>
       </div>
@@ -43,7 +55,7 @@
       }
     },
     methods: {
-      move() {
+      moveProfile() {
         this.$router.push('/main/profile');
       }
     },
@@ -74,12 +86,12 @@
 }
 .friendListTop{
   height: 100vh;
-  overflow: hidden;
-}
-.friendList{
-  overflow: scroll;
 }
 .friendHeight{
+  max-height: 70vh;
+  overflow: scroll;
+}
+.friend {
   height: 200px;
 }
 .profileImage {

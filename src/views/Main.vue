@@ -27,7 +27,7 @@
             </div>
           </div>
         </div>
-        <div class="col-10 border component">
+        <div class="col border component">
           <FriendListView v-show="sideTab === 0"/>
           <ChatHistoryView v-show="sideTab === 1"/>
           <TimeLineView v-show="sideTab === 2"/>

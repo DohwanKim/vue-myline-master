@@ -5,7 +5,8 @@ import Main from './views/Main.vue';
 
 import Login from './components/LoginView.vue';
 import Register from './components/RegisterView.vue';
-import Profile from './components/ProfileView.vue'
+import Profile from './components/ProfileView.vue';
+import Chat from './components/ChatView.vue';
 
 import FirebaseService from './api/firebaseService'
 
@@ -51,6 +52,14 @@ const router = new Router({
       path: '/main/profile',
       name: 'profile',
       component: Profile,
+      meta: {
+        auth: true,
+      },
+    },
+    {
+      path: '/main/chat',
+      name: 'chat',
+      component: Chat,
       meta: {
         auth: true,
       },

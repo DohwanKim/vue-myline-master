@@ -9,8 +9,6 @@ vue와 Bootstrap를 이용해 MAC의 LINE 프로그램을 만들어봅니다.
 ## Project setup
 ```
 yarn install
-yarn add bootstrap
-yarn add @vue-cil
 ```
 
 ### Compiles and hot-reloads for development
