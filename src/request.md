@@ -46,7 +46,6 @@
   
 
 #19. 09. 27 Fri
-
 ## ChatView
   TextArea 추가
     ? 동적으로 움직이는 창을 만들고 싶으니 보류중. 제이쿼리 예문이 많이 나오는데 뷰나 부트스트랩은 안보이는 것 같음.
@@ -58,7 +57,20 @@
     + 이미지 부분은 한번 클릭으로 열림.
     + v-on@click:dbclick() 으로 더블클릭을 구분해줄수 있음.
     + 참고 페이지 : https://stackoverflow.com/questions/41303982/vue-js-how-to-handle-click-and-dblclick-events-on-same-element
-    ? v-for 각 요소에 어떻게 접근하지?
+      -> TargetIndex 데이터를 만들어주고 클릭시 해당 div의 인덱스를 TargetIndex에 넣어줌.
+      -> TargetIndex를 값 변경을 감지하는 Watch를 하나 만들어줌.
+      -> Watch에서 요소를 리스트 덩어리로 들고옴($refs)
+      -> 새로 바뀐 값이 곧 클릭한 인덱스이므로 targets[nValue].classList.toggle('active')를 통해 class를 활성화 시키고 반대의 경우엔
+        targets[oValue].classList.remove('active') 를 써줌. 쥰낸 뷰스럽게 만듬.
+      -> 원래 뷰에선 $refs 사용을 권장하지 않으나 어쩔수 없을땐 씀. 카피가 아닌 자체 뷰 프로젝트일땐 지양해도 괜찮을 듯 함.
 
 ## Main
   최상위 Body부분에 스크롤 제한.
+
+
+#19. 09. 30 Mon
+
+## FriendListView
+  친구 리스트 열고 닫기 기능 만들어주기.
+
+## ChatHistoryView, TimeLineView, NewFriendView, RegisterView 스피드하게 구조 만들기

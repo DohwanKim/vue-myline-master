@@ -17,10 +17,10 @@
         <div class="col">텍스트: 친구(??), 열고 닫기 기능 ^</div>
       </div>
       <div class="row friendHeight">
-        <div class="col">
-          <div class="row border friendList" v-for="(item, index) in user" v-bind:key="item.key" @click="clicked(index)" @dblclick="clicked(index)">
-            <div class="col friend" v-bind="">
-              <img v-bind:src="item.userImage" class="profileImage rounded-circle" v-on:click.stop="moveProfile"></img>
+        <div class="col" ref="profileList">
+          <div class="row border friendList" v-for="(item, index) in user" v-bind:key="index" v-bind:data-index="index" @click="listClicked" @dblclick="listClicked">
+            <div class="col friend" v-bind:data-index="index">
+              <img v-bind:src="item.userImage" class="profileImage rounded-circle" v-on:click.stop="moveProfile(index)"></img>
               {{ item.userName }}
             </div>
           </div>
@@ -36,6 +36,7 @@
   export default {
     data() {
       return {
+        targetIndex: Number,
         user: [
           {
             userName: '김동륜',
@@ -55,26 +56,34 @@
           },
         ],
         click: undefined,
-        clickType: 'Click or Doubleclick ME',
+      }
+    },
+    watch: {
+      targetIndex(nValue, oValue) {
+        var { profileList } = this.$refs
+        var targets = profileList.children
+        targets[nValue].classList.toggle('active')
+        targets[oValue].classList.remove('active') 
       }
     },
     methods: {
-      moveProfile() {
+      moveProfile(index) {
         this.$router.push('/main/profile');
       },
       moveChat() {
         this.$router.push('/main/chat');
       },
-      clicked(index) {
+      listClicked(evt) {
+        var target = evt.target
+        var { index } = target.dataset
+        this.targetIndex = parseInt(index);
         return new Promise ((resolve, reject) => {
           if (this.click) {
-            clearTimeout(this.click)
-            resolve('Detected DoubleClick')
-            
+            clearTimeout(this.click);
+            this.moveChat();
           }
           this.click = setTimeout(() => {
-          this.click = undefined
-          resolve('Detected SingleClick')
+            this.click = undefined;
           }, 200)
         })
       },
