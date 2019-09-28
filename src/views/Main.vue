@@ -102,7 +102,10 @@
 
 <style scoped>
 #mainView{
+  width: 100%;
   height: 100%;
+  position: fixed; 
+	overflow-y: scroll;
 }
 .sortSet{
   position: relative;

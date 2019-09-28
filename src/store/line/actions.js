@@ -7,5 +7,8 @@ export default {
   },
   changeDropDown({commit}, data){
     commit('updateDropDown', data)
+  },
+  changeFriendList({commit},data){
+    commit('updateFriendList', data)
   }
 }

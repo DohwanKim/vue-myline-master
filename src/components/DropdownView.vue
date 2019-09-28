@@ -1,7 +1,7 @@
 <template>
   <div id="dropdownView">
     <div class="dropdown">
-      <div class="item" v-for="(item, idx) in list" :key="idx" @click="logout">
+      <div class="item" v-for="(item, idx) in list" :key="idx" @click.stop="logout">
         {{item}}
       </div>
     </div>
@@ -44,7 +44,7 @@ export default {
   position: fixed;
   bottom: 100px;
   left: 55px;
-  z-index: 1;
+  z-index: 5;
 }
 .dropdown{
   width: 100px;
