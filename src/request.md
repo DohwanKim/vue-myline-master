@@ -72,5 +72,7 @@
 
 ## FriendListView
   친구 리스트 열고 닫기 기능 만들어주기.
+    + store에 상태값 등록
+    + 친구창의 꺽쇠 부분 모습 변경 및 친구 숨기기
 
 ## ChatHistoryView, TimeLineView, NewFriendView, RegisterView 스피드하게 구조 만들기

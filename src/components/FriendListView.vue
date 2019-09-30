@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="friendList">
     <div class="col border friendListTop">
       <div class="row height1 border-bottom topTabColor">
         <div class="col">잉여공간</div>
@@ -14,9 +14,13 @@
         <div class="col">자신 프로필</div>
       </div>
       <div class="row height1 border-bottom middleTabColor">
-        <div class="col">텍스트: 친구(??), 열고 닫기 기능 ^</div>
+        <div class="col-10" v-on:click="hideFriend()">
+          친구({{this.user.length}})
+        </div>
+        <div class="col-2" v-show="this.friendList === 0">△</div>
+        <div class="col-2" v-show="this.friendList === 1">▽</div>
       </div>
-      <div class="row friendHeight">
+      <div class="row friendHeight" v-show="this.friendList === 0">
         <div class="col" ref="profileList">
           <div class="row border friendList" v-for="(item, index) in user" v-bind:key="index" v-bind:data-index="index" @click="listClicked" @dblclick="listClicked">
             <div class="col friend" v-bind:data-index="index">
@@ -37,6 +41,7 @@
     data() {
       return {
         targetIndex: Number,
+        click: undefined,
         user: [
           {
             userName: '김동륜',
@@ -55,7 +60,6 @@
             userImage: 'https://yt3.ggpht.com/a-/AN66SAxYHLLDKseP_C5JO3EEACtMBANis6rqfSauzw=s900-mo-c-c0xffffffff-rj-k-no',
           },
         ],
-        click: undefined,
       }
     },
     watch: {
@@ -67,11 +71,19 @@
       }
     },
     methods: {
+      ...mapActions([
+        'changeDropDown',
+        'changeFriendList',
+      ]),
       moveProfile(index) {
         this.$router.push('/main/profile');
       },
       moveChat() {
         this.$router.push('/main/chat');
+      },
+      hideFriend() {
+        if(this.friendList === 0){ this.changeFriendList(1); }
+        else { this.changeFriendList(0); }
       },
       listClicked(evt) {
         var target = evt.target
@@ -88,9 +100,11 @@
         })
       },
     },
-    ...mapActions([
-      'changeDropDown',
-    ]),
+    computed: {
+      ...mapState([
+        'friendList',
+      ])
+    },
   }
 </script>
 
@@ -135,6 +149,9 @@
   background-size: 150px;
   width: 70px;
   height: 70px;
+}
+.cramp {
+  text-align: end;
 }
 
 </style>

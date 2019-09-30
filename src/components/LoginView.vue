@@ -27,7 +27,7 @@
               </div>
               <!-- 탭값에 따라 변경되는 부분 -->
               <div class="tab-content">
-                <div v-show="this.$store.state.selectTab === 0">
+                <div v-show="this.selectTab === 0">
                   <div class="row border-bottom border-left border-right input-height">
                     <input class="inputsize" v-model="auth.idText" placeholder="이메일">
                   </div>
@@ -51,7 +51,7 @@
                     </div>
                   </div>
                 </div>
-                <div v-show="this.$store.state.selectTab === 1" class="tab-text">
+                <div v-show="this.selectTab === 1" class="tab-text">
                   <img v-bind:src="qrCode" class="rounded qrImage"></img>
                   <div class="row phonelogin">
                     <div class="col-7">

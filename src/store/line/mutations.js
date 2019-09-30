@@ -9,6 +9,6 @@ export default {
     state.dropDown = data;
   },
   updateFriendList(state, data){ //0: off, 1: on
-    state.dropDown = data;
+    state.friendList = data;
   }
 }
