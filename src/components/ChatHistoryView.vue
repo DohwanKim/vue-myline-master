@@ -5,11 +5,15 @@
       </div>
     </div>
     <div class="row noMargin middle">
-      <div class="col noPadding">
-        아이콘
+      <div class="col-1 noPadding">
+        콘
+      </div>
+      <div class="col-8 mr-auto noPadding">
+        <span class="helper"></span>
         <input type="text" class="search" placeholder="대화방, 메시지 검색">
-        아이콘
-        아이콘
+      </div>
+      <div class="col-auto">
+        콘2
       </div>
     </div>
     <div class="row noMargin friendHeight">
@@ -107,7 +111,7 @@
   vertical-align: middle;
 }
 .search {
-  width: 50%;
+  width: 100%;
   height: 20px;
   border: 0px solid;
 }
@@ -125,5 +129,10 @@
 }
 .active {
   background-color: rgb(237, 234, 238);
+}
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 </style>
