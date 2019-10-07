@@ -9,8 +9,27 @@ services:
       MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
-    ports:
-      - '3307:3306'
     volumes:
       - ./mysql/data:/var/lib/mysql
+    ports:
+      - '3307:3306'
+
+  redis:
+    image: redis:latest
+    volumes:
+      - ./redis/data:/data
+    ports:
+      - '6379:6739'
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/env/conf.d:/etc/nginx/conf.d
+      - ./nginx/deployment:/usr/share/nginx/html
+    ports:
+      - "80:80"
+  java:
+    image: ./openjdk
+    ports:
+      - '8080:8080'
 

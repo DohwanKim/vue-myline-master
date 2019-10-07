@@ -8,7 +8,7 @@ import Register from './components/RegisterView.vue';
 import Profile from './components/ProfileView.vue';
 import Chat from './components/ChatView.vue';
 
-import FirebaseService from './api/firebaseService'
+import FirebaseService from './api/firebaseService';
 
 Vue.use(Router);
 
