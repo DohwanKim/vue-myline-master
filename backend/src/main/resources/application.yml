@@ -7,3 +7,6 @@ spring:
     url: jdbc:mysql://localhost:3307/linedb
     user: user
     password: password
+  mybatis:
+    type-aliases-package: ivis.mobile.linedb.domain.repository.model
+

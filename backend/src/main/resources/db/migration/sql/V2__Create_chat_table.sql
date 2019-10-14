@@ -1,0 +1,7 @@
+CREATE TABLE chat (
+    rid VARCHAR(250) NOT NULL,
+    uid VARCHAR(250) NOT NULL,
+    chat VARCHAR(250) NOT NULL,
+    timestamp TIMESTAMP NOT NULL,
+    imageUrl VARCHAR(250)
+)
